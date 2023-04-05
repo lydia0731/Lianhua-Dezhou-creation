@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var db = require('../service/firebase');
 
 const { WEB } = process.env;
 
@@ -19,6 +20,14 @@ router.get('/draw', (req, res, next) => {
 
 router.get('/login', (req, res, next) => {
   res.render('login', { WEB });
+});
+
+router.post('/api',async (req, res, next) => {
+  let data = req.body || '';
+  let test = await db.init();
+  console.log('data', data);
+  console.log('test', test);
+  return {data: '>A<'};
 });
 
 module.exports = router;
