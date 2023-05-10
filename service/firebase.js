@@ -1,6 +1,7 @@
 
 const initApp = require('firebase/app');
 const firestore = require('firebase/firestore');
+const moment = require('moment');
 
 const {DB_NAME,DB_SERVICE,DB_APP_ID, DB_API_KEY,DB_AUTH_DOMAIN,DB_PROJECT_ID,DB_STORAGE_BUCKET,DB_MESSAGING_SENDER_ID} = process.env;
 const firebaseConfig = {
@@ -22,17 +23,21 @@ class firebaseService {
      * @param {string} collection 
      * @returns 
      */
-    async getAllData(collection) {
+    async getAllArtice(collection) {
         let citiesRef = firestore.collection(db, collection);
-        let docSnap = await firestore.getDocs(citiesRef);
+        let query = firestore.query(citiesRef, firestore.orderBy('time', 'desc'));
+        
+        let docSnap = await firestore.getDocs(query);
         let docsData = [];
         docSnap.forEach((doc) => {
+            let data = doc.data();
+            data.time = moment(data.time.seconds*1000).format('YYYY-MM-DD');
             docsData.push({
                 id: doc.id,
-                data: doc.data()
+                data: data
             });
         });
-        // console.log('docsData', docsData);
+        
         return docsData;
     }
 

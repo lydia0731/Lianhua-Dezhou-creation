@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="/css/animate.css" />
     <link rel="stylesheet" href="/css/lineicons.css" />
     <link rel="stylesheet" href="/css/ud-styles.css" />
+
+    <script>
+      const webUrl = '<%= WEB %>';
+      const apiUrl = '<%= API_URL %>';
+    </script>
   </head>
   <body>
     <!-- ====== Header Start ====== -->
@@ -133,64 +138,13 @@
           <div class="col-lg-12">
             <div class="ud-section-title mx-auto text-center">
               <h2>最新文章</h2>
-              <!-- <p></p> -->
-            </div>
-             
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 col-md-6">
-            <div class="ud-single-testimonial wow fadeInUp" data-wow-delay=".1s" >
-              <div class="ud-testimonial-content">
-                <a href="#"><h6>2023/04/01</h6></a>
-              </div>
-              <div class="ud-testimonial-info">
-                <div class="ud-testimonial-image">
-                  <img src="/images/testimonials/author-01.png" alt="author" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="ud-single-testimonial wow fadeInUp" data-wow-delay=".1s" >
-              <div class="ud-testimonial-content">
-                <a href="#"><h6>2023/04/01</h6></a>
-              </div>
-              <div class="ud-testimonial-info">
-                <div class="ud-testimonial-image">
-                  <img src="/images/testimonials/author-01.png" alt="author" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="ud-single-testimonial wow fadeInUp" data-wow-delay=".1s" >
-              <div class="ud-testimonial-content">
-                <a href="#"><h6>2023/04/01</h6></a>
-              </div>
-              <div class="ud-testimonial-info">
-                <div class="ud-testimonial-image">
-                  <img src="/images/testimonials/author-01.png" alt="author" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="ud-single-testimonial wow fadeInUp" data-wow-delay=".1s" >
-              <div class="ud-testimonial-content">
-                <a href="#"><h6>2023/04/01</h6></a>
-              </div>
-              <div class="ud-testimonial-info">
-                <div class="ud-testimonial-image">
-                  <img src="/images/testimonials/author-01.png" alt="author" />
-                </div>
-              </div>
             </div>
           </div>
         </div>
+        <div class="row" id="newArtice"></div>
         <div class="row">
           <div class="col-lg-12">
-            <a href="javascript:void(0)" class="ud-main-btn">查看更多...</a>
+            <a href="<%= WEB %>blog" class="ud-main-btn">查看更多...</a>
           </div>
         </div>
       </div>
@@ -309,8 +263,10 @@
 
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/js/moment.min.js"></script>
     <script src="/js/wow.min.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js-source/index.js"></script>
+    <script src="/js-source/common.js"></script>
   </body>
 </html>
