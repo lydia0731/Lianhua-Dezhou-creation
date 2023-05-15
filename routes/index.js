@@ -8,7 +8,16 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/blog', (req, res, next) => {
-  res.render('blog', { WEB, API_URL });
+  const url = req.url;
+  let articeNumber = url.split('n=')[1] || null;
+  let articeType = url.split('t=')[1] || null;
+  articeType = decodeURI(articeType);
+  res.render('blog', { 
+    webUrl: WEB, 
+    apiUrl: API_URL, 
+    articeNumber, 
+    articeType
+  });
 });
 
 router.get('/draw', (req, res, next) => {

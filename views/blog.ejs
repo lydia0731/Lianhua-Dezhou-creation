@@ -12,6 +12,13 @@
     <link rel="stylesheet" href="/css/animate.css" />
     <link rel="stylesheet" href="/css/lineicons.css" />
     <link rel="stylesheet" href="/css/ud-styles.css" />
+
+    <script>
+      const webUrl = "<%= webUrl %>";
+      const apiUrl = "<%= apiUrl %>";
+      const articeType = "<%= articeType %>";
+      const articeNumber = "<%= articeNumber %>";
+    </script>
   </head>
   <body>
     <header class="ud-header">
@@ -19,7 +26,7 @@
         <div class="row">
           <div class="col-lg-12">
             <nav class="navbar navbar-expand-lg">
-              <a class="navbar-brand" href="<%= WEB %>">
+              <a class="navbar-brand" href="<%= webUrl %>">
                 <img src="/images/logo/title.jpg" style="width: 100px;" alt="Logo" />
               </a>
               <button class="navbar-toggler">
@@ -31,10 +38,10 @@
               <div class="navbar-collapse">
                 <ul id="nav" class="navbar-nav mx-auto">
                   <li class="nav-item">
-                    <a class="ud-menu-scroll" href="<%= WEB %>">首頁</a>
+                    <a class="ud-menu-scroll" href="<%= webUrl %>">首頁</a>
                   </li>
                   <li class="nav-item">
-                    <a class="ud-menu-scroll" href="<%= WEB %>">委託圖分享</a>
+                    <a class="ud-menu-scroll" href="<%= webUrl %>">委託圖分享</a>
                   </li>
                   <li class="nav-item nav-item-has-children">
                     <a href="javascript:void(0)"> 主線序 </a>
@@ -98,104 +105,12 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-            <div class="ud-blog-details-content">
-              <h2 class="ud-blog-details-title">
-                Facing a challenge is kind of a turn-on for an easy rider
-              </h2>
-              <p class="ud-blog-details-para">
-                There’s a time and place for everything… including asking for
-                reviews. For instance: you should not asking for a review on
-                your checkout page. The sole purpose of this page is to guide
-                your customer to complete their purchase, and this means that
-                the page should be as minimalist and pared-down possible. You
-                don’t want to have any unnecessary elements or Call To Actions.
-              </p>
-              <p class="ud-blog-details-para">
-                There’s a time and place for everything… including asking for
-                reviews. For instance: you should not asking for a review on
-                your checkout page. The sole purpose of this page is to guide
-                your customer to complete their purchase, and this means that
-                the page should be as minimalist and pared-down possible. You
-                don’t want to have any unnecessary elements or Call To Actions.
-              </p>
-              <h3 class="ud-blog-details-subtitle">Sea no quidam vulputate</h3>
-              <p class="ud-blog-details-para">
-                At quo cetero fastidii. Usu ex ornatus corpora sententiae,
-                vocibus deleniti ut nec. Ut enim eripuit eligendi est, in
-                iracundia signiferumque quo. Sed virtute suavitate suscipiantur
-                ea, dolor this can eloquentiam ei pro. Suas adversarium
-                interpretaris eu sit, eum viris impedit ne. Erant appareat
-                corrumpit ei vel.
-              </p>
-
-              <div class="ud-blog-quote">
-                <i class="lni lni-quotation"></i>
-                <p>
-                  A spring of truth shall flow from it: like a new star it shall
-                  scatter the darkness of ignorance, and cause a light
-                  heretofore unknown to shine amongst men.
-                </p>
-                <h6>“Andrio Domeco”</h6>
-              </div>
-              <h3 class="ud-blog-details-subtitle">
-                What is it with your ideas?
-              </h3>
-              <p class="ud-blog-details-para">
-                At quo cetero fastidii. Usu ex ornatus corpora sententiae,
-                vocibus deleniti ut nec. Ut enim eripuit eligendi est, in
-                iracundia signiferumque quo. Sed virtute suavitate suscipiantur
-                ea, dolor this can eloquentiam ei pro. Suas adversarium
-                interpretaris eu sit, eum viris impedit ne. Erant appareat
-                corrumpit ei vel.
-              </p>
-              <p class="ud-blog-details-para">
-                At quo cetero fastidii. Usu ex ornatus corpora sententiae,
-                vocibus deleniti ut nec. Ut enim eripuit eligendi est, in
-                iracundia signiferumque quo. Sed virtute suavitate suscipiantur
-                ea, dolor this can eloquentiam ei pro. Suas adversarium
-                interpretaris eu sit, eum viris impedit ne. Erant appareat
-                corrumpit ei vel.
-              </p>
-
-              <div class="ud-blog-details-action">
-                <ul class="ud-blog-tags">
-                  <li>
-                    <a href="javascript:void(0)">Design</a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)">Development</a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)">Info</a>
-                  </li>
-                </ul>
-                <div class="ud-blog-share">
-                  <h6>Share This Post</h6>
-                  <ul class="ud-blog-share-links">
-                    <li>
-                      <a href="javascript:void(0)" class="facebook">
-                        <i class="lni lni-facebook-filled"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)" class="twitter">
-                        <i class="lni lni-twitter-filled"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)" class="linkedin">
-                        <i class="lni lni-linkedin-original"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <div id="blogDetails" class="ud-blog-details-content"></div>
           </div>
-          <div class="col-lg-4">
+          <!-- <div class="col-lg-4">
             <div class="ud-blog-sidebar">
               <div class="ud-articles-box">
-                <h3 class="ud-articles-box-title">Popular Articles</h3>
+                <h3 class="ud-articles-box-title">熱門文章</h3>
                 <ul class="ud-articles-list">
                   <li>
                     <div class="ud-article-image">
@@ -264,13 +179,21 @@
                 </ul>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
     
+    <a href="javascript:void(0)" class="back-to-top">
+      <i class="lni lni-chevron-up"> </i>
+    </a>
+
     <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/js/moment.min.js"></script>
     <script src="/js/wow.min.js"></script>
     <script src="/js/main.js"></script>
+    <script src="/js-source/blog.js"></script>
+    <script src="/js-source/common.js"></script>
   </body>
 </html>

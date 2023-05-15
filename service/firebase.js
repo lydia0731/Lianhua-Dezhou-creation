@@ -21,9 +21,9 @@ const db = firestore.getFirestore(app);
 class firebaseService {
     /** 取得某個 collection 的全部資料
      * @param {string} collection 
-     * @returns 
+     * @returns docsData
      */
-    async getAllArtice(collection) {
+    async getAllData(collection) {
         let citiesRef = firestore.collection(db, collection);
         let query = firestore.query(citiesRef, firestore.orderBy('time', 'desc'));
         
@@ -41,20 +41,76 @@ class firebaseService {
         return docsData;
     }
 
-    /** 取得某個 collection 的特定資料
-     * @param {string} collection 
-     * @param {string} body 
-     * @returns 
+    /** 取得 Artice 的特定資料
+     * @param {object} body 
+     * @returns docsData
      */
-    async getData(collection, body) {
-        // const docRef = firestore.doc(db, "article_type", "1");
-        // const docSnap = await firestore.getDoc(docRef);
-        // if (docSnap.exists()) {
-        //     console.log("Document data:", docSnap.data());
-        // } else {
-        //     // docSnap.data() will be undefined in this case
-        //     console.log("No such document!");
-        // }
+    async getArtice(body) {
+        const collection = body.collection;
+        const articeID = body.id;
+        const articeType = body.type;
+        let docRef, docSnap, docsData = [];
+        // console.log(collection, articeID, articeType);
+        if(articeID) {
+            // 獲取某篇文章
+            docRef = firestore.doc(db, collection, articeID);
+            docSnap = await firestore.getDoc(docRef);
+            
+            let data = docSnap.data();
+            if(data) {
+                data.time = moment(data.time.seconds*1000).format('YYYY-MM-DD');
+                docsData.push({
+                    id: docSnap.id,
+                    data: data
+                });
+            }
+        } else if(articeType) {
+            // 獲取文章清單(依分類)
+            let query, citiesRef = firestore.collection(db, collection);
+            switch(articeType) {
+                case 'all':
+                    query = firestore.query(citiesRef, firestore.orderBy('time', 'desc'));
+                    break;
+                default:
+                    // query = firestore.query(citiesRef, firestore.where('tag', '==', articeType), firestore.orderBy('time', 'desc'));
+                    query = firestore.query(
+                        citiesRef, 
+                        firestore.where('tag', 'array-contains', articeType),
+                        firestore.orderBy('time', 'desc')
+                    );
+            }
+            docSnap = await firestore.getDocs(query);
+            docSnap.forEach((doc) => {
+                let data = doc.data();
+                if(data) {
+                    data.time = moment(data.time.seconds*1000).format('YYYY-MM-DD');
+                    docsData.push({
+                        id: doc.id,
+                        data: data
+                    });
+                }
+            });
+        }
+        
+        return docsData;
+    }
+
+    async getAllImage(collection) {
+        let citiesRef = firestore.collection(db, collection);
+        let query = firestore.query(citiesRef, firestore.orderBy('time', 'desc'));
+        
+        let docSnap = await firestore.getDocs(query);
+        let docsData = [];
+        docSnap.forEach((doc) => {
+            let data = doc.data();
+            data.time = moment(data.time.seconds*1000).format('YYYY-MM-DD');
+            docsData.push({
+                id: doc.id,
+                data: data
+            });
+        });
+        
+        return docsData;
     }
 }
 
